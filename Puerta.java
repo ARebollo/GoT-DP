@@ -127,6 +127,7 @@ public class Puerta {
 		{		 
 		 this.Combinacion = new abb<Llave>();
 		 configurarCombinacionCfg(0, vectorCfg.length-1);
+		 this.Probados = new abb<Llave>();
 		 //TODO Quizás haya que reiniciar los probados? No creo, pero es posible. 
 		 //También quitar los mensajes de texto.
 		 System.out.println();
