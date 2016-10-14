@@ -43,7 +43,7 @@ public class Puerta {
    	 * @param constante Constante de profundidad para la cerradura de la puerta
    	 * 
    	 */
-	Puerta(Llave [] vector, int constante){ // Constructor parametrizado, para configurar la combinacion pertinente
+	public Puerta(Llave [] vector, int constante){ // Constructor parametrizado, para configurar la combinacion pertinente
 		
 		estado = false;
 		Probados = new abb<Llave>();
@@ -128,8 +128,7 @@ public class Puerta {
 		 this.Combinacion = new abb<Llave>();
 		 configurarCombinacionCfg(0, vectorCfg.length-1);
 		 this.Probados = new abb<Llave>();
-		 //TODO Quizás haya que reiniciar los probados? No creo, pero es posible. 
-		 //También quitar los mensajes de texto.
+		 //TODO Quizás quitar los mensajes de texto.
 		 System.out.println();
 		 System.out.println("Reiniciando puerta...");
 		}
@@ -142,31 +141,6 @@ public class Puerta {
 		
 	}
 
-	/**
-   	 * Crea la combinacion de la puerta a partir de un vector de Llaves, siguiendo el algoritmo especificado en la entrega <br>
-   	 * Para ello inserta el valor medio y se llama recursivamente primero para la mitad derecha del vector y posteriormente para la izquierda, 
-   	 * usando un vector auxiliar como parametro de entrada.
-   	 * 
-   	 * @param vector Vector de Llave
-   	 * 
-   	 */
-	@Deprecated
-	private void configurarCombinacion (Llave [] vector, int izq, int der){
-	       
-        int mit = izq + (der - izq)/2;
-         //Insercion valor intermedio
-        Combinacion.insertar(vector[mit]);
-        if (izq<der && mit != 0)
-        { 	        	
-         //Copia subvector derecho y llamada recursiva
-         configurarCombinacion(vector, mit+1, der);
-         
-         //Copia subvector izquierdo y llamada recursiva
-         configurarCombinacion(vector, izq, mit-1);
-        }
-       
-    }
-	
 	/**
    	 * Crea la combinacion de la puerta a partir del vector de Llaves vectorCfg, siguiendo el algoritmo especificado en la entrega <br>
    	 * Para ello inserta el valor medio y se llama recursivamente primero para la mitad derecha del vector y posteriormente para la izquierda.
@@ -183,10 +157,10 @@ public class Puerta {
         Combinacion.insertar(vectorCfg[mit]);
         if (izq<der && mit != 0)
         { 	        	
-         //Copia subvector derecho y llamada recursiva
+         //Llamada recursiva subvector derecho
          configurarCombinacionCfg(mit+1, der);
          
-         //Copia subvector izquierdo y llamada recursiva
+         //Llamada recursiva subvector izquierdo
          configurarCombinacionCfg(izq, mit-1);
         }
        
@@ -337,20 +311,6 @@ public class Puerta {
 		this.vectorCfg = vectorCfg;
 	}
 	
-	public static void main(String[] args){
-		
-		Llave[] vect = new Llave[15];
-		for (int i = 1; i<=15;i++)
-		{
-			vect[i-1] = new Llave(2*i - 1);
-		}
-		Puerta p = new Puerta(vect, 4);
-		p.mostrarVectorCfg();
-		System.out.println(p.getCombinacion().arbolAString());
-		p.getCombinacion().anchura();
-		p.probarLlave(new Llave(5));
-		p.getCombinacion().anchura();
-	}
 	
 }
 
