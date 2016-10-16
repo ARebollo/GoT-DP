@@ -97,9 +97,7 @@ public class Llave implements Comparable<Llave> {
    	 */
 	@Override
 	public String toString(){
-		
-		String aux = "" + id;
-		return aux;		
+		return Integer.toString(id);		
 	}
 
 	@Override
