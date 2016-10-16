@@ -12,14 +12,33 @@ import Estructuras.abb;
 * @author
 *   <b> Antonio Rebollo Guerra, Carlos Salguero Sanchez </b><br>
 *   <b> Asignatura Desarrollo de Programas</b><br>
-*   <b> Curso 15/16 </b>
+*   <b> Curso 16/17 </b>
 */
 public class Puerta {
-
+	
+	/**
+	 * 	Arbol que almacena las llaves que ya han sido probadas en la puerta
+	 */
 	private abb<Llave> Probados;
+	
+	/**
+	 * 	Arbol que almacena la combinacion de la puerta
+	 */
 	private abb<Llave> Combinacion;
-	private boolean estado; // True abierta, False cerrada
+	
+	/**
+	 * 	Booleano que indica el estado de la puerta, true si esta abierta, false en caso contrario
+	 */
+	private boolean estado; 
+	
+	/**
+	 * 	Entero que almacena la profundidad a la que debe abrirse la puerta
+	 */
 	private int profundidad;
+	
+	/**
+	 *  Vector que almacena la combinacion para configurar de la puerta
+	 */
 	private Llave[] vectorCfg;
 	
 	/**
@@ -128,14 +147,11 @@ public class Puerta {
 		 this.Combinacion = new abb<Llave>();
 		 configurarCombinacionCfg(0, vectorCfg.length-1);
 		 this.Probados = new abb<Llave>();
-		 //TODO Quizás quitar los mensajes de texto.
-		 System.out.println();
 		 System.out.println("Reiniciando puerta...");
 		}
 		else  // Si estaba abierta, cerrarla
 		{
 		 this.estado = false;
-		 System.out.println();
 		 System.out.println("Cerrando puerta...");
 		}
 		
@@ -155,13 +171,14 @@ public class Puerta {
         int mit = izq + (der - izq)/2;
          //Insercion valor intermedio
         Combinacion.insertar(vectorCfg[mit]);
-        if (izq<der && mit != 0)
-        { 	        	
-         //Llamada recursiva subvector derecho
-         configurarCombinacionCfg(mit+1, der);
-         
+        
+        if (izq<der && mit != vectorCfg.length)
+        { 	        	  
          //Llamada recursiva subvector izquierdo
          configurarCombinacionCfg(izq, mit-1);
+         
+         //Llamada recursiva subvector derecho
+         configurarCombinacionCfg(mit+1, der);
         }
        
     }
@@ -204,7 +221,7 @@ public class Puerta {
 	/**
    	 * Obtiene el arbol Probados de la clase Puerta
    	 * 
-   	 * @return Arbol de los Llave probados
+   	 * @return Arbol de las Llaves probadas
    	 * 
    	 */
 	public abb<Llave> getProbados() {
@@ -215,7 +232,7 @@ public class Puerta {
 	/**
    	 * Cambia el arbol Probados de la clase Puerta
    	 * 
-   	 * @param probados Nuevo arbol de Llave
+   	 * @param probados Nuevo arbol de Llaves
    	 * 
    	 */
 	public void setProbados(abb<Llave> probados) {
@@ -237,7 +254,7 @@ public class Puerta {
 	/**
    	 * Cambia el arbol Combinacion de la clase Puerta
    	 * 
-   	 * @param combinacion Nuevo arbol de Llave
+   	 * @param combinacion Nuevo arbol de Llaves
    	 * 
    	 */
 	public void setCombinacion(abb<Llave> combinacion) {
@@ -292,7 +309,7 @@ public class Puerta {
 	/**
    	 * Obtiene el vector de configuracion de la clase Puerta
    	 * 
-   	 * @return Vector con los Llaveclorianos que se van a usar en la configuracion de la combinacion
+   	 * @return Vector con las Llaves que se van a usar en la configuracion de la combinacion
    	 * 
    	 */
 	public Llave[] getVectorCfg() {
@@ -303,7 +320,7 @@ public class Puerta {
 	/**
    	 * Cambia el vector de configuracion de la clase Puerta
    	 * 
-   	 * @param vectorCfg Nuevo vector de Llave
+   	 * @param vectorCfg Nuevo vector de Llaves
    	 * 
    	 */
 	public void setVectorCfg(Llave[] vectorCfg) {

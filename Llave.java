@@ -5,10 +5,13 @@ package Estructuras;
 * @author
 *   <b> Antonio Rebollo Guerra, Carlos Salguero Sanchez </b><br>
 *   <b> Asignatura Desarrollo de Programas</b><br>
-*   <b> Curso 15/16 </b>
+*   <b> Curso 16/17 </b>
 */
 public class Llave implements Comparable<Llave> {
 	
+	/**
+	 * 	Entero que guarda el identificador de la Llave
+	 */
 	int id;
 	
 	/**
@@ -88,8 +91,6 @@ public class Llave implements Comparable<Llave> {
 			return 1;
 	}
 	
-	
-	
 	/**
    	 * Muestra la informacion de la clase Llave
    	 * 
@@ -98,8 +99,7 @@ public class Llave implements Comparable<Llave> {
 	public String toString(){
 		
 		String aux = "" + id;
-		return aux;
-		
+		return aux;		
 	}
 
 	@Override
