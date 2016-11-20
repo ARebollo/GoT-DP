@@ -5,22 +5,17 @@ package Estructuras;
 * @author
 *   <b> Antonio Rebollo Guerra, Carlos Salguero Sanchez </b><br>
 *   <b> Asignatura Desarrollo de Programas</b><br>
-*   <b> Curso 16/17 </b>
+*   <b> Curso 15/16 </b>
 */
 public class Llave implements Comparable<Llave> {
 	
-	/**
-	 * 	Entero que guarda el identificador de la Llave
-	 */
 	int id;
 	
 	/**
    	 * Constructor default de la clase Llave
    	 */
 	Llave (){
-		
 		id = -1;
-		
 	}
 	
 	/**
@@ -30,9 +25,7 @@ public class Llave implements Comparable<Llave> {
    	 * 
    	 */
 	public Llave (int id){
-		
 		this.id = id;
-		
 	}
 
 	/**
@@ -41,10 +34,8 @@ public class Llave implements Comparable<Llave> {
    	 * @param Llave Objeto de la clase Llave
    	 * 
    	 */
-	Llave (Llave Llave) {
-		
+	Llave (Llave Llave) {	
 		this.id = Llave.getId();
-		
 	}
 	
 	// Getters & Setters
@@ -56,9 +47,7 @@ public class Llave implements Comparable<Llave> {
    	 * 
    	 */
 	public int getId (){
-		
 		return id;
-		
 	}
 	
 	/**
@@ -68,9 +57,7 @@ public class Llave implements Comparable<Llave> {
    	 * 
    	 */
 	public void setId (int id){
-		
 		this.id = id;
-		
 	}
 	
 	/**
@@ -91,13 +78,17 @@ public class Llave implements Comparable<Llave> {
 			return 1;
 	}
 	
+	
+	
 	/**
    	 * Muestra la informacion de la clase Llave
    	 * 
    	 */
 	@Override
 	public String toString(){
-		return Integer.toString(id);		
+
+		return Integer.toString(id);
+		
 	}
 
 	@Override
@@ -125,7 +116,7 @@ public class Llave implements Comparable<Llave> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Llave other = (Llave) obj;
+		Llave other = (Llave)obj;
 		if (id != other.id)
 			return false;
 		return true;
